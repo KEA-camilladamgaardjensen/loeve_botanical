@@ -1,0 +1,607 @@
+/* 
+
+Theme Name: loeve_childtheme
+Template: twentynineteen
+Author: Emma Bachmann og Camilla Damgaard
+Version: 1.2.2
+
+*/
+/*OVERORDNEDE REGLER*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: #f4efe6;
+}
+/*Sætter grid på hjemmesiden, så der er en automatisk margin i siderne på web*/
+main {
+  display: grid;
+  grid-template-columns: 1fr minmax(200px, 1000px) 1fr;
+}
+/*placerer alt indhold; artikler, i dette grid*/
+main article:not(#main #post-8 .frontpage .bred) {
+  grid-column: 2/3;
+}
+
+/*********TYPOGRAFIER***********/
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+h1 {
+  font-family: "Outfit", sans-serif;
+  font-weight: 600;
+  color: black;
+  font-size: 1.5rem;
+  margin: 4rem 0.5rem 2rem 0.5rem;
+}
+
+#post-19 > header > h1 {
+  text-align: center;
+}
+
+h2 {
+  font-family: "Outfit", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 0 0 0.3rem 0;
+}
+
+h3 {
+  font-family: "Outfit", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 400;
+  margin: 0.3rem 0;
+}
+
+p {
+  font-family: "Outfit", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 300;
+  line-height: 0.9rem;
+}
+
+/*fjerner parentthemes streg over h1 og h2*/
+h1:before,
+h2:before {
+  display: none;
+}
+.entry .entry-title::before {
+  display: none;
+}
+h1:not(.site-title):before,
+h2:before {
+  display: none;
+}
+
+.site-footer #footer-menu {
+  font-family: "Outfit", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 300;
+}
+
+/**********STYLING AF HEADER**********/
+.site-header {
+  padding: 1rem 0 1rem 0;
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+}
+
+/*navigation placeres i kolonne, og styles*/
+.main-navigation > div {
+  display: inline;
+  position: absolute;
+  top: 10%;
+}
+.main-navigation .main-menu {
+  display: flex;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  flex-direction: column;
+  font-family: "Outfit", sans-serif;
+  font-weight: light;
+  font-size: 0.7rem;
+}
+#menu-navigation li a {
+  color: black !important;
+}
+#menu-navigation li a:hover {
+  color: #da5e18 !important;
+}
+
+/*placering af headerens elementer i grid*/
+#masthead .site-branding-container {
+  display: grid;
+}
+#masthead .site-branding-container .site-branding {
+  display: grid;
+  grid-template-columns: 20px repeat(3, 1fr) 20px;
+  margin: 0;
+}
+.site-logo {
+  grid-column: 3/4;
+  position: static;
+  margin-left: auto;
+  margin-right: auto;
+}
+#kurv {
+  width: 35px;
+  right: 2vw;
+  position: fixed;
+}
+body.page .main-navigation {
+  grid-row: 2/3;
+  grid-column: 2/3;
+}
+/*logo sættes i midten på tablet og web*/
+@media only screen and (min-width: 768px) {
+  .site-logo {
+    margin-right: auto;
+    margin-left: auto;
+    position: static;
+  }
+}
+
+/**************STYLING AF FORSIDENS INDHOLD************/
+#post-8 > .entry-header {
+  display: none;
+}
+.frontpage {
+  padding-inline: 2rem;
+}
+.frontpage h3 {
+  margin-top: -0.5rem;
+}
+.frontpage div.icon-container:hover {
+  color: #da5e18;
+  cursor: pointer;
+}
+/*styling af udforsk knap*/
+#post-8
+  > div
+  > div.wp-block-buttons.alignwide.is-content-justification-center.is-layout-flex.wp-container-7
+  > div
+  > a {
+  border: black 0.05rem solid;
+  border-radius: 3rem;
+  color: black;
+  font-family: "Outfit", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 300;
+  padding: 0.4rem 2rem;
+}
+#post-8
+  > div
+  > div.wp-block-buttons.alignwide.is-content-justification-center.is-layout-flex.wp-container-7
+  > div
+  > a:hover {
+  border: #da5e18 0.05rem solid;
+  color: #da5e18;
+}
+
+/*mediaquery for forsiden*/
+/*placerer forsidens øverste tre elementer i et grid med klasser tildelt i wordpress*/
+@media (min-width: 782px) {
+  .immortelle,
+  .olie,
+  .manuka {
+    display: grid;
+    grid-template-columns: auto auto;
+  }
+
+  .immortelle figure,
+  .olie figure,
+  .manuka figure,
+  .immortelle h2,
+  .olie h2,
+  .manuka h2,
+  .immortelle h3,
+  .olie h3,
+  .manuka h3 {
+    grid-column: 1/3;
+  }
+  /*Dette sætter prisen og plus-knappen på linje*/
+  .immortelle .forside_pris,
+  .olie .forside_pris,
+  .manuka .forside_pris {
+    grid-column: 1/2;
+  }
+  .frontpage h3 {
+    margin: 0;
+  }
+}
+/*Mediaquery der overskriver parentthemes måde at sætte forsidens billeder på. Nu alligner de*/
+@media only screen and (min-width: 768px) {
+  .entry .entry-content,
+  .entry .entry-summary {
+    max-width: 100%;
+    margin: 0;
+    padding: 0 60px;
+  }
+  .entry .entry-content > *,
+  .entry .entry-content .wp-block-image:not(.alignwide):not(.alignfull) > img {
+    max-width: 100%;
+  }
+}
+@media only screen and (min-width: 1168px) {
+  .entry .entry-content .wp-block-image:not(.alignwide):not(.alignfull) > img {
+    max-width: 100%;
+  }
+}
+
+/************STYLING AF PRODUKTSIDE**************/
+#produktside > h1 {
+  grid-column: 2/3;
+  text-align: center;
+}
+#produktside > h1::before {
+  display: none;
+}
+/*placerer indhold i midten på mobil*/
+#allproducts {
+  margin-inline: 5rem;
+}
+
+.pris {
+  margin-block: 0.3rem;
+}
+/*styler knapperne*/
+.produkt_loop #produktknap,
+#tabs > button {
+  background-color: transparent;
+  border: solid 0.05rem black;
+  border-radius: 2rem;
+  color: black;
+  font-family: "Outfit", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 300;
+  padding: 0.4rem 1rem;
+}
+.produkt_loop #produktknap:hover,
+#tabs > button:hover {
+  background-color: transparent;
+  border: solid 0.05rem #da5e18;
+  border-radius: 2rem;
+  color: #da5e18;
+  font-family: "Outfit", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 300;
+  padding: 0.4rem 1rem;
+}
+
+.produkt_loop .multi {
+  margin-bottom: -0.3rem;
+}
+
+#tabs {
+  margin-bottom: 0.3rem;
+}
+/*animation for hr linje der kører henover skærmen*/
+#produkt_hr {
+  display: block;
+  width: 100vw;
+  height: 20px;
+  margin: 0.5rem 0 2.5rem -50vw;
+  border: none;
+  background-color: transparent;
+  background-image: url(https://emmaiguldbergsgade.dk/4sem_eksamen/ingrediens_hr.svg);
+  left: 700px;
+  position: relative;
+  animation: alternate-reverse produkt_hr 17s infinite;
+  animation-timing-function: linear;
+}
+@keyframes produkt_hr {
+  from {
+    left: -300px;
+  }
+  to {
+    right: -1500px;
+  }
+}
+/*mediaquery styling for produktside*/
+/*ændrer animationen bredde og tid så den varer længere på tablet og web*/
+@media (min-width: 700px) {
+  #produkt_hr {
+    margin-block: 0 2.5rem;
+    left: 2000px;
+    animation-duration: 35s;
+  }
+  @keyframes produkt_hr {
+    from {
+      left: -1000px;
+    }
+    to {
+      right: -2000px;
+    }
+  }
+
+  #allproducts {
+    margin-inline: 0;
+  }
+  .pris {
+    margin-block: 0;
+  }
+
+  .produkt_loop h2 {
+    margin: 0;
+  }
+
+  #produktside #allproducts .product_loop .indeholder {
+    margin-top: 0.5rem;
+  }
+
+  /*sætter produktloopets grid, og bestemmer hvad der placeres hvor i griddet*/
+  .produkt_loop {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(200px, 400px));
+    gap: 0.5rem;
+    grid-template-rows: repeat(4, auto);
+    justify-content: center;
+  }
+  .produkt_loop img {
+    grid-row: 1/7;
+    width: 75%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .produkt_loop .indeholder {
+    grid-column: 1/3;
+    text-align: center;
+  }
+  .produkt_loop #produktknap {
+    grid-column: 2/3;
+  }
+}
+
+/**********STYLING OG OPSÆTNING AF INGREDIENSSIDE************/
+#igside > h1 {
+  grid-column: 2/3;
+  text-align: center;
+}
+/*placerer ingredienserne i flex, så de rykker sig med skærmens bredde*/
+#allingredients {
+  margin: 0 5rem 2rem 5rem;
+  display: flex;
+  flex-flow: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/*styling af filtrering på ingrediensside*/
+#igside #filtrering {
+  grid-column: 2/3;
+  display: flex;
+  justify-content: center;
+  flex-flow: wrap;
+  margin: 0.8rem 3rem;
+  gap: 0.5rem;
+}
+#igside #filtrering button {
+  background-color: transparent;
+  border: solid 0.05rem black;
+  border-radius: 2rem;
+  color: black;
+  font-family: "Outfit", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 300;
+  padding: 0.4rem 1rem;
+  margin: 0;
+}
+#igside #filtrering button:hover {
+  background-color: transparent;
+  border: solid 0.05rem #da5e18;
+  color: #da5e18;
+}
+/*sætter en størrelse på ingredienserne, så de kan passe i flex-griddet*/
+@media (min-width: 700px) {
+  .ingrediens_loop {
+    width: 280px;
+  }
+  #allingredients {
+    margin-inline: 0;
+  }
+}
+
+/***************STYLING OG OPSÆTNING AF EVENTSIDE**************/
+#eventside > h1 {
+  grid-column: 2/3;
+  text-align: center;
+}
+
+#allevents {
+  margin: 0 3rem 2rem 5rem;
+}
+
+.event_loop h2 {
+  margin: 0;
+}
+/*styler tilmeld dig-knappen*/
+.event_loop #eventknap {
+  background-color: transparent;
+  border: solid 0.05rem black;
+  border-radius: 2rem;
+  color: black;
+  font-family: "Outfit", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 300;
+  padding: 0.4rem 1rem;
+  margin: 0.5rem 0;
+}
+.event_loop #eventknap:hover {
+  background-color: transparent;
+  border: solid 0.05rem #da5e18;
+  color: #da5e18;
+}
+/*styler hr linjer der skiller eventsene*/
+#event_hr {
+  background-color: black;
+  border: 0;
+  height: 0.05rem;
+  margin-block: 0.5rem 2rem;
+}
+
+/*Placerer dato på linje i mobil*/
+.event_loop .dag {
+  display: grid;
+  grid-template-columns: 25px 30px;
+}
+
+/*placerer i grid til tablet og web*/
+@media (min-width: 900px) {
+  .event_loop {
+    display: grid;
+    grid-template-columns: 50px 400px 1fr;
+    grid-template-rows: repeat(3, auto);
+    gap: 0.5rem;
+  }
+  .event_loop img {
+    grid-row: 1/4;
+    grid-column: 2/3;
+  }
+  .event_loop p {
+    grid-row: 2/3;
+    grid-column: 3/4;
+  }
+  .event_loop #eventknap {
+    grid-row: 3/4;
+    grid-column: 3/4;
+  }
+  .event_loop .dato {
+    grid-row: 1/3;
+  }
+  #event_hr {
+    grid-column: 1/4;
+  }
+}
+
+/************STYLING HISTORIEN BAG**************/
+#hsside > h1 {
+  grid-column: 2/3;
+  text-align: center;
+}
+#hsside article {
+  margin: 0 5rem 2rem 5rem;
+}
+/*styler links på siden*/
+#hsside p a {
+  color: black;
+  text-decoration: underline;
+}
+#hsside p a:hover {
+  color: #da5e18;
+  cursor: pointer;
+}
+/*stylign for tablet og web*/
+@media (min-width: 700px) {
+  #hsside article {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    grid-template-rows: auto auto auto;
+  }
+
+  #hsside article img {
+    grid-row: 1/4;
+  }
+}
+
+/**********STYLING AF FORHANDLERE SIDEN************/
+#fside > h1 {
+  grid-column: 2/3;
+  text-align: center;
+}
+#fside article {
+  margin: 0 5rem 2rem 5rem;
+}
+
+/*styler links*/
+#fside article p a {
+  color: black;
+  text-decoration: underline;
+}
+#fside article p a:hover {
+  color: #da5e18;
+  cursor: pointer;
+}
+
+/****************STYLING OG OPSÆTNING AF FOOTER**************/
+/*footeren kaldes colophon i wordpress. dette sætter den i grid med 5 kolonner*/
+#colophon {
+  display: grid;
+  grid-template-columns: 1rem repeat(3, 1fr) 1rem;
+  grid-template-rows: auto auto 2.5rem;
+  margin: 0 0 1rem 0;
+}
+/*placerer teksten i en kolonne hvor teksten står over hinanden*/
+.site-footer #footer-menu {
+  list-style: none;
+  font-size: 0.7rem;
+  padding: 0;
+  grid-column: 2/3;
+}
+.site-footer #footer-menu li a {
+  color: black;
+}
+#colophon #footer-menu li:hover {
+  color: #da5e18;
+  cursor: pointer;
+}
+.site-footer #footer-menu li a:hover {
+  color: #da5e18;
+}
+
+/*Styling af nyhedsbrev-knap*/
+#colophon #footer-knap {
+  background-color: transparent;
+  border: solid 0.05rem black;
+  border-radius: 1rem;
+  color: black;
+  font-family: "Outfit", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 300;
+  padding: 0.4rem;
+  grid-column: 2/5;
+  margin: 0.5rem 1rem 0 1rem;
+}
+#colophon #footer-knap:hover {
+  border: solid 0.05rem #da5e18;
+  color: #da5e18;
+}
+/*placering af email og styling af placeholder*/
+#footer-email {
+  grid-column: 2/5;
+  text-align: center;
+  font-size: 0.7rem;
+}
+#footer-email input {
+  background-color: transparent;
+  border: solid 0.05rem black;
+  border-radius: 1rem;
+  color: black;
+}
+#footer-email input::placeholder {
+  font-family: "Outfit", sans-serif;
+  font-weight: 300;
+}
+
+/*mediaquery, som gør footeren responsiv*/
+/*Sættes i flex i stedet for grid, for at det lægger sig ved siden af hinanden på tablet og web*/
+@media only screen and (min-width: 768px) {
+  .site-footer #footer-menu {
+    display: flex;
+    grid-column: 2/5;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  #colophon #footer-knap {
+    grid-column: 3/4;
+  }
+}
+
+/*Styling af tabs på produktside*/
+.hide {
+  display: none;
+}
